@@ -1,0 +1,126 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:2:1-65:12
+	package
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:3:5-45
+		INJECTED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:5:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:6:5-79
+	android:name
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:6:22-76
+application
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:8:5-63:19
+MERGED from [com.android.support:appcompat-v7:22.2.0] C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:22.2.0] C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:22.2.0] C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\AndroidManifest.xml:22:5-20
+	android:label
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:12:9-41
+	android:allowBackup
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:10:9-35
+	android:icon
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:11:9-43
+	android:theme
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:13:9-40
+	android:name
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:9:9-38
+activity#com.example.android.colgpartal.MainActivity
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:14:9-22:20
+	android:label
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:16:13-45
+	android:name
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:15:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:17:13-21:29
+action#android.intent.action.MAIN
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:18:17-69
+	android:name
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:18:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:20:17-77
+	android:name
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:20:27-74
+activity#com.example.android.colgpartal.user_account
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:23:9-26:20
+	android:label
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:25:13-64
+	android:name
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:24:13-41
+activity#com.example.android.colgpartal.login_activity
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:27:9-30:20
+	android:label
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:29:13-66
+	android:name
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:28:13-43
+activity#com.example.android.colgpartal.CreateAccount
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:31:9-34:20
+	android:label
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:33:13-66
+	android:name
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:32:13-42
+activity#com.example.android.colgpartal.LoginActivity
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:35:9-38:20
+	android:label
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:37:13-57
+	android:name
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:36:13-42
+activity#com.example.android.colgpartal.colg_list
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:39:9-42:20
+	android:label
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:41:13-61
+	android:name
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:40:13-38
+activity#com.example.android.colgpartal.ColgDetails
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:43:9-46:20
+	android:label
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:45:13-64
+	android:name
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:44:13-40
+activity#com.example.android.colgpartal.UserProfile
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:47:9-50:20
+	android:label
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:49:13-40
+	android:name
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:48:13-40
+activity#com.example.android.colgpartal.sell
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:51:9-54:20
+	android:label
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:53:13-56
+	android:name
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:52:13-33
+activity#com.example.android.colgpartal.Sell
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:55:9-58:20
+	android:label
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:57:13-56
+	android:name
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:56:13-33
+activity#com.example.android.colgpartal.Books
+ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:59:9-62:20
+	android:label
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:61:13-57
+	android:name
+		ADDED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml:60:13-34
+uses-sdk
+INJECTED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:22.2.0] C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:22.2.0] C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\AndroidManifest.xml:20:5-43
+MERGED from [com.github.dmytrodanylyk.android-process-button:library:1.0.0] C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\build\intermediates\exploded-aar\com.github.dmytrodanylyk.android-process-button\library\1.0.0\AndroidManifest.xml:2:5-73
+MERGED from [com.android.support:support-v4:22.2.0] C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\AndroidManifest.xml:20:5-43
+	android:targetSdkVersion
+		INJECTED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Charu gupta\Desktop\samplechat\colgpartal\app\src\main\AndroidManifest.xml
