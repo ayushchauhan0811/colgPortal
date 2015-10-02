@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">colg partal</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_user_account">user_account</string>
+    <string name="title_activity_login_activity">login_activity</string>
+    <string name="title_activity_create_account">CreateAccount</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_colg_list">colg_list</string>
+    <string name="title_activity_colg_details">ColgDetails</string>
+    <string name="title_activity_user_profile">UserProfile</string>
+    <string name="title_activity_sell">sell</string>
+    <string name="title_activity_books">Books</string>
+    <string name="action_logout">Logout</string>
+    <string name="title_activity_buy">Buy</string>
+    <string name="title_activity_books_buy_list">Books_buy_list</string>
+    <string name="title_activity_on_sale">OnSale</string>
+</resources>
