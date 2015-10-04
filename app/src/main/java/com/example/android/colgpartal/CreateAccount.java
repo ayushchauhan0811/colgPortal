@@ -156,7 +156,7 @@ public class CreateAccount extends ActionBarActivity implements ProgressGenerato
     @Override
     public void onComplete() {
 
-        startActivity(new Intent(CreateAccount.this, UserProfile.class));
+        startActivity(new Intent(CreateAccount.this, user_profile.class));
 
     }
 }

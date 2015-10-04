@@ -45,7 +45,7 @@ public class  Books extends AppCompatActivity {
                 model.saveInBackground();
 
                 Toast.makeText(getApplicationContext(),"Details saved successfully",Toast.LENGTH_LONG).show();
-                startActivity(new Intent(Books.this,UserProfile.class));
+                startActivity(new Intent(Books.this,user_profile.class));
             }
         });
     }
