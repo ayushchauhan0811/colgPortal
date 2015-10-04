@@ -16,4 +16,21 @@
     <string name="title_activity_buy">Buy</string>
     <string name="title_activity_books_buy_list">Books_buy_list</string>
     <string name="title_activity_on_sale">OnSale</string>
+    <string name="title_activity_particular_book">particular_book</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+    <string name="home">Home</string>
+    <string name="buy">Buy</string>
+    <string name="sell">Sell</string>
+    <string name="resources">Resources</string>
+    <string name="roommate">Roommate</string>
+    <string name="putUp">Put up</string>
+    <string name="ObjectsOnSale">Objects on Sale</string>
 </resources>

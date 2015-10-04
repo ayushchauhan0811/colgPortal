@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:name=".MyApplication"
@@ -45,10 +46,6 @@
             android:label="@string/title_activity_colg_details" >
         </activity>
         <activity
-            android:name=".UserProfile"
-            android:label="UserProfile" >
-        </activity>
-        <activity
             android:name=".sell"
             android:label="@string/title_activity_sell" >
         </activity>
@@ -71,6 +68,10 @@
         <activity
             android:name=".OnSale"
             android:label="@string/title_activity_on_sale" >
+        </activity>
+        <activity
+            android:name=".user_profile"
+            android:label="@string/title_activity_user_profile" >
         </activity>
     </application>
 
