@@ -8,6 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.parse.LogOutCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+
 public class Buy extends AppCompatActivity  {
     Button books;
     @Override
@@ -36,10 +40,28 @@ public class Buy extends AppCompatActivity  {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (item.getItemId() == R.id.action_example) {
+            ParseUser.logOutInBackground(new LogOutCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if (e == null) {
+
+                        startActivity(new Intent(Buy.this, MainActivity.class));
+
+                    } else {
+
+                    }
+                }
+            });
+            return true;
+        }
+
+        if (item.getItemId() == R.id.action_home) {
+
+            startActivity(new Intent(Buy.this, user_profile.class));
+
             return true;
         }
 

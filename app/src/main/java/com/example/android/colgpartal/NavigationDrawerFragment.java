@@ -1,6 +1,7 @@
 package com.example.android.colgpartal;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -20,7 +21,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+
+import com.parse.LogOutCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -106,7 +110,7 @@ public class NavigationDrawerFragment extends Fragment {
                         getString(R.string.buy),
                         getString(R.string.sell),
                         getString(R.string.resources),
-                        getString(R.string.roommate),
+                        getString(R.string.ObjectsOnSale),
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
         return mDrawerListView;
@@ -250,7 +254,18 @@ public class NavigationDrawerFragment extends Fragment {
         }
 
         if (item.getItemId() == R.id.action_example) {
-            Toast.makeText(getActivity(), "LogOut", Toast.LENGTH_SHORT).show();
+            ParseUser.logOutInBackground(new LogOutCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if (e == null) {
+
+                        startActivity(new Intent(getActivity(), MainActivity.class));
+
+                    } else {
+
+                    }
+                }
+            });
             return true;
         }
 

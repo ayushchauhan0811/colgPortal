@@ -70,7 +70,7 @@ public class OnSale extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.logoout) {
+        if (id == R.id.action_example) {
 
             ParseUser.logOutInBackground(new LogOutCallback() {
                 @Override
@@ -86,6 +86,13 @@ public class OnSale extends AppCompatActivity {
             });
 
 
+
+            return true;
+        }
+
+        if (item.getItemId() == R.id.action_home) {
+
+            startActivity(new Intent(OnSale.this, user_profile.class));
 
             return true;
         }
