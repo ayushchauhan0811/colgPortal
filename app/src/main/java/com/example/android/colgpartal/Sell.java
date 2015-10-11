@@ -1,8 +1,8 @@
 package com.example.android.colgpartal;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,11 +43,9 @@ public class Sell extends AppCompatActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.logoout) {
 
+        if (item.getItemId() == R.id.action_example) {
             ParseUser.logOutInBackground(new LogOutCallback() {
                 @Override
                 public void done(ParseException e) {
@@ -60,12 +58,15 @@ public class Sell extends AppCompatActivity {
                     }
                 }
             });
-
-
-
             return true;
         }
 
+        if (item.getItemId() == R.id.action_home) {
+
+            startActivity(new Intent(Sell.this, user_profile.class));
+
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 }

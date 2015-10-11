@@ -33,4 +33,5 @@
     <string name="roommate">Roommate</string>
     <string name="putUp">Put up</string>
     <string name="ObjectsOnSale">Objects on Sale</string>
+    <string name="action_home">Home</string>
 </resources>

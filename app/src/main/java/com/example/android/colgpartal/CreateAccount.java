@@ -146,7 +146,7 @@ public class CreateAccount extends ActionBarActivity implements ProgressGenerato
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_example) {
             return true;
         }
 

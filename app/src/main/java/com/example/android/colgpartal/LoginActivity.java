@@ -9,9 +9,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import java.util.List;
 
 public class LoginActivity extends ActionBarActivity {
 
@@ -42,10 +47,21 @@ public class LoginActivity extends ActionBarActivity {
                         public void done(ParseUser parseUser, ParseException e) {
                             if (e == null) {
 
-                                Toast.makeText(getApplicationContext(), "Login Successfully!"
-                                        , Toast.LENGTH_LONG).show();
+                                ParseQuery<ParseObject> query = ParseQuery.getQuery("Colg");
+                                query.whereNotEqualTo("colgId", parseUser.get("colgId"));
+                                query.findInBackground(new FindCallback<ParseObject>() {
+                                    @Override
+                                    public void done(List<ParseObject> list, ParseException e) {
+                                        if (e == null) {
+                                            Toast.makeText(getApplicationContext(), "Login " +
+                                                    "Successfully!"
+                                                    , Toast.LENGTH_LONG).show();
 
-                                startActivity(new Intent(LoginActivity.this, user_profile.class));
+                                            startActivity(new Intent(LoginActivity.this,
+                                                    user_profile.class));
+                                        }
+                                    }
+                                });
 
                             } else {
 

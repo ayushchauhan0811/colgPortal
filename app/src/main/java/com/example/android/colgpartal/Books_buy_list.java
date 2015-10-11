@@ -1,5 +1,6 @@
 package com.example.android.colgpartal;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -73,7 +74,14 @@ public class Books_buy_list extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_example) {
+            return true;
+        }
+
+        if (item.getItemId() == R.id.action_home) {
+
+            startActivity(new Intent(Books_buy_list.this, user_profile.class));
+
             return true;
         }
 
