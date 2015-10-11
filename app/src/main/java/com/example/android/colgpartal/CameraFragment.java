@@ -161,7 +161,7 @@ public class CameraFragment extends Fragment {
 		profile.setUserId(ParseUser.getCurrentUser().getObjectId());
 		profile.setPhotoFile(photoFile);
 		FragmentManager fm = getActivity().getFragmentManager();
-		fm.popBackStack("fragment_user_profile",
+		fm.popBackStack("UserProfileFragment",
 				FragmentManager.POP_BACK_STACK_INCLUSIVE);
 	}
 

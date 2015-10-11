@@ -48,12 +48,8 @@ public class user_profile extends AppCompatActivity
         FragmentManager fragmentManager = getSupportFragmentManager();
         if(position==0)
         {
-            android.app.FragmentManager manager = getFragmentManager();
-            android.app.Fragment fragment = manager.findFragmentById(R.id.container);
-            fragment = new fragment_user_profile();
-            if(fragment==null)
-            fragmentManager.beginTransaction().add(R.id.container,fragment).commit();
            // startActivity(new Intent(user_profile.this, NewMealActivity.class));
+           fragmentManager.beginTransaction().replace(R.id.container, UserProfileFragment.newInstance()).commit();
         }
         else if(position==1)
         {
@@ -146,9 +142,7 @@ public class user_profile extends AppCompatActivity
          * number.
          */
         public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment;
-            fragment = (PlaceholderFragment) new fragment_user_profile();
-
+            PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
             args.putInt(ARG_SECTION_NUMBER, sectionNumber);
             fragment.setArguments(args);
