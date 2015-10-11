@@ -28,8 +28,6 @@
     <ListView
         android:id="@+id/list"
         android:layout_below="@+id/linearLayout"
-        android:dividerHeight="8dp"
-        android:divider="#ffffff"
         android:layout_width="match_parent"
         android:layout_height="350dp"></ListView>
     <Button

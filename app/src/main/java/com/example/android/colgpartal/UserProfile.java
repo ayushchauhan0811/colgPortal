@@ -1,82 +1,163 @@
 package com.example.android.colgpartal;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.parse.LogOutCallback;
-import com.parse.ParseException;
 import com.parse.ParseUser;
 
-public class  UserProfile extends AppCompatActivity implements View.OnClickListener {
-    Button sell;
-    Button onSale;
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.user_profile);
+public class UserProfile extends Fragment {
 
+    /**
+     * Returns a new instance of this fragment for the given section number.
+     */
+    public static UserProfile newInstance() {
+        UserProfile fragment = new UserProfile();
+        return fragment;
+    }
 
-        sell= (Button) findViewById(R.id.sell);
-        onSale= (Button) findViewById((R.id.onSale));
+    private TextView name , email , mNo ;
+    private ImageView profile ;
+    private static int RESULT_LOAD_IMG = 1;
+    private Uri fileUri;
+    String imgDecodableString;
 
+    private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
+    public static final int MEDIA_TYPE_IMAGE = 1;
 
-        sell.setOnClickListener(this);
-        onSale.setOnClickListener(this);
+    public UserProfile () {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.activity_user_profile2, container,
+                false);
+
+        name = (TextView) rootView.findViewById(R.id.user_name);
+        email = (TextView) rootView.findViewById(R.id.email);
+        mNo = (TextView) rootView.findViewById(R.id.mNumber);
+        profile = (ImageView) rootView.findViewById(R.id.profile_pic);
+
+        name.setText(ParseUser.getCurrentUser().getUsername());
+        email.setText(ParseUser.getCurrentUser().getEmail());
+        mNo.setText(ParseUser.getCurrentUser().getString("mobile"));
+
+        profile.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                captureImage();
+                return false;
+            }
+        });
+
+        return rootView;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        ((user_profile) activity).onSectionAttached(1);
+    }
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.logoout) {
+    /*
+ * Capturing Camera Image will lauch camera app requrest image capture
+ */
+    private void captureImage() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-            ParseUser.logOutInBackground(new LogOutCallback() {
-                @Override
-                public void done(ParseException e) {
-                    if (e == null) {
+        fileUri = Uri.fromFile(getOutputMediaFile(MEDIA_TYPE_IMAGE));
 
-                        startActivity(new Intent(UserProfile.this, MainActivity.class));
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
 
-                    } else {
+        // start the image capture Intent
+        startActivityForResult(intent, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
+    }
 
-                    }
-                }
-            });
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        try {
+            // When an Image is picked
+            if (requestCode == RESULT_LOAD_IMG
+                    && null != data) {
+                // Get the Image from data
 
-
-
-            return true;
+                previewCapturedImage();
+            } else {
+                Log.v("error:-","you havnt selected an image");
+            }
+        } catch (Exception e) {
+            Log.v("error:-","something went wrong");
         }
 
-        return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.sell:
-                startActivity(new Intent(UserProfile.this,Sell.class));
-                //we do something
-                break;
-            case R.id.onSale:
-                startActivity(new Intent(UserProfile.this, OnSale.class));
+    private void previewCapturedImage() {
+        try {
+            // hide video preview
+
+            // bimatp factory
+            BitmapFactory.Options options = new BitmapFactory.Options();
+
+            // downsizing image as it throws OutOfMemory Exception for larger
+            // images
+            options.inSampleSize = 8;
+
+            final Bitmap bitmap = BitmapFactory.decodeFile(fileUri.getPath(),
+                    options);
+
+            profile.setImageBitmap(bitmap);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
         }
+    }
+
+    private static File getOutputMediaFile(int type) {
+
+        // External sdcard location
+        File mediaStorageDir = new File(
+                Environment
+                        .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                "Hello Camera");
+
+        // Create the storage directory if it does not exist
+        if (!mediaStorageDir.exists()) {
+            if (!mediaStorageDir.mkdirs()) {
+                Log.d("Hello Camera", "Oops! Failed create "
+                        + "Hello Camera" + " directory");
+                return null;
+            }
+        }
+
+        // Create a media file name
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
+                Locale.getDefault()).format(new Date());
+        File mediaFile;
+        if (type == MEDIA_TYPE_IMAGE) {
+            mediaFile = new File(mediaStorageDir.getPath() + File.separator
+                    + "IMG_" + timeStamp + ".jpg");
+        }  else {
+            return null;
+        }
+
+        return mediaFile;
     }
 }

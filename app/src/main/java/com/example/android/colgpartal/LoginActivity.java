@@ -48,7 +48,7 @@ public class LoginActivity extends ActionBarActivity {
                             if (e == null) {
 
                                 ParseQuery<ParseObject> query = ParseQuery.getQuery("Colg");
-                                query.whereNotEqualTo("colgId", parseUser.get("colgId"));
+                                query.whereNotEqualTo("colgId", parseUser.getString("colgId"));
                                 query.findInBackground(new FindCallback<ParseObject>() {
                                     @Override
                                     public void done(List<ParseObject> list, ParseException e) {
