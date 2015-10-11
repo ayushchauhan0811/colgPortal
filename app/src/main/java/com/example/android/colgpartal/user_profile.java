@@ -49,7 +49,8 @@ public class user_profile extends AppCompatActivity
         if(position==0)
         {
             fragmentManager.beginTransaction()
-                    .replace(R.id.container, PlaceholderFragment.newInstance(position+1)).commit();
+                    .replace(R.id.container, UserProfile.newInstance())
+                    .commit();
         }
         else if(position==1)
         {
