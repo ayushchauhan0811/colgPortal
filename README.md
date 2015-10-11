@@ -1,1 +1,2 @@
 # colgPortal
+An app for the college students through which students can buy/sell books, bikes and can put resources like previous year papers and notes. Students can contact the seller and  can get the knowledge of various hangout spots around their college through this app and can also add some details to it. The app will keep information of about accounts of students and details of College and products on sale. 
