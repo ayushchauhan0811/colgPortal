@@ -15,18 +15,15 @@ import com.example.android.colgpartal.R;
 import java.io.Serializable;
 import java.util.List;
 
-import model.BooksModel;
+import model.CarModel;
 
-/**
- * Created by Charu gupta on 01-Oct-15.
- */
-public class BooksAdapter extends ArrayAdapter<BooksModel> {
+public class CarsAdapter extends ArrayAdapter<CarModel> {
 
     private String mUserId;
-    List<BooksModel> data;
+    List<CarModel> data;
     Activity activity;
 
-    public BooksAdapter(Activity act, List<BooksModel> messages) {
+    public CarsAdapter(Activity act, List<CarModel> messages) {
         super(act, 0, messages);
         activity=act;
         data=messages;
@@ -38,33 +35,33 @@ public class BooksAdapter extends ArrayAdapter<BooksModel> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.books_buy_row, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.cars_buy_row, parent, false);
 
             final ViewHolder holder = new ViewHolder();
             holder.name = (TextView) convertView.findViewById(R.id.name);
-            //holder.desc= (TextView) convertView.findViewById(R.id.desc);
-            holder.stream= (TextView) convertView.findViewById(R.id.stream);
-            holder.quantity= (TextView) convertView.findViewById(R.id.quantity);
+            holder.model= (TextView) convertView.findViewById(R.id.model);
+            holder.price= (TextView) convertView.findViewById(R.id.price);
             holder.callBuyer= (ImageView) convertView.findViewById(R.id.caller);
+            holder.report=(ImageView) convertView.findViewById(R.id.report);
             convertView.setTag(holder);
         }
         final ViewHolder holder = (ViewHolder) convertView.getTag();
         //final Colg message =  data.get(position);
 
-        final BooksModel message = getItem(position);
+        final CarModel message = getItem(position);
         /*if(holder.name.getText().toString()==null)
         {
             Toast.makeText(activity, "view empty", Toast.LENGTH_LONG).show();
         }*/
         holder.name.setText(message.getName());
-        //holder.desc.setText(message.getDesc());
-        holder.stream.setText(message.getStream());
-        holder.quantity.setText(message.getQuantity().toString());
+        holder.desc.setText(message.getDesc());
+        holder.model.setText(message.getModel());
+        holder.price.setText(message.getPrice().toString());
 
         final StringBuilder builder = new StringBuilder();
         builder.append("Books Name: " + message.getName());
-        builder.append("Stream " + message.getStream());
-        //builder.append("Desc: " + message.getDesc());
+        builder.append("Model " + message.getModel());
+        builder.append("Desc: " + message.getDesc());
         builder.append("Seller Id: " + message.getSellerId());
 
 
@@ -82,6 +79,13 @@ public class BooksAdapter extends ArrayAdapter<BooksModel> {
                 //activity.startActivity(new Intent(activity,user_account.class));
             }
         });
+        holder.report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
         return convertView;
     }
 
@@ -89,9 +93,10 @@ public class BooksAdapter extends ArrayAdapter<BooksModel> {
 
     class ViewHolder {
         public TextView name;
-        //public TextView desc;
-        public TextView stream;
-        public TextView quantity;
+        public TextView desc;
+        public TextView model;
+        public TextView price;
         public ImageView callBuyer;
+        public ImageView report;
     }
 }

@@ -21,14 +21,14 @@ import java.util.List;
 
 import model.BooksModel;
 
-public class OnSaleAdapter extends ArrayAdapter<BooksModel> {
+public class OnSaleAdapter extends ArrayAdapter<String> {
 
 
     private String mUserId;
-    List<BooksModel> data;
+    List<String> data;
     Activity activity;
 
-    public OnSaleAdapter(Activity act, List<BooksModel> messages) {
+    public OnSaleAdapter(Activity act, List<String> messages) {
         super(act, 0, messages);
         activity = act;
         data = messages;
@@ -49,15 +49,16 @@ public class OnSaleAdapter extends ArrayAdapter<BooksModel> {
         final ViewHolder holder = (ViewHolder) convertView.getTag();
 
 
-        final BooksModel message = (BooksModel) getItem(position);
+        final String message =  getItem(position);
 
-        holder.name.setText(message.getName());
+        holder.name.setText(message);
         holder.box.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (((CheckBox) v).isChecked()) {
                     ParseQuery<BooksModel> query = ParseQuery.getQuery(BooksModel.class);
                     query.whereEqualTo("name", holder.name.getText().toString());
+
                     query.findInBackground(new FindCallback<BooksModel>() {
                         @Override
                         public void done(List<BooksModel> list, ParseException e) {

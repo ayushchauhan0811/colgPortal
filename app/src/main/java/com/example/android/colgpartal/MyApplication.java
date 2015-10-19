@@ -6,6 +6,7 @@ import com.parse.Parse;
 import com.parse.ParseObject;
 
 import model.BooksModel;
+import model.CarModel;
 import model.Colg;
 import model.GlobalVariables;
 import model.Profile;
@@ -24,6 +25,7 @@ public class MyApplication extends Application {
 
         ParseObject.registerSubclass(Colg.class);
         ParseObject.registerSubclass(BooksModel.class);
+        ParseObject.registerSubclass(CarModel.class);
         ParseObject.registerSubclass(Profile.class);
 
         Parse.initialize(this, "metwWjc2cc4YjPBb4dtc9H41zZUYO0EmwbDYTOqf", "w0KNMSiP4DseOw4BCw9WkXIUQb0eDhwkJj58NHc8");

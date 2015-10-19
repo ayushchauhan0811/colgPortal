@@ -49,7 +49,9 @@ public class user_profile extends AppCompatActivity
         if(position==0)
         {
            // startActivity(new Intent(user_profile.this, NewMealActivity.class));
-           fragmentManager.beginTransaction().replace(R.id.container, UserProfileFragment.newInstance()).commit();
+           //fragmentManager.beginTransaction().replace(R.id.container, UserProfileFragment.newInstance()).commit();
+            fragmentManager.beginTransaction().replace(R.id.container, PlaceholderFragment.newInstance(position+1)).commit();
+
         }
         else if(position==1)
         {
