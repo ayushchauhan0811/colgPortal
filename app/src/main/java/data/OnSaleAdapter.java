@@ -20,6 +20,7 @@ import com.parse.SaveCallback;
 import java.util.List;
 
 import model.BooksModel;
+import model.CarModel;
 
 public class OnSaleAdapter extends ArrayAdapter<String> {
 
@@ -64,19 +65,52 @@ public class OnSaleAdapter extends ArrayAdapter<String> {
                         public void done(List<BooksModel> list, ParseException e) {
 
                             if (e == null) {
-                                BooksModel book = (BooksModel) list.get(0);
-                                book.setHasSold("YES");
-                                book.saveInBackground(new SaveCallback() {
-                                    public void done(ParseException e) {
-                                        if (e == null) {
-                                            // Saved successfully.
-                                            Log.d("error", "saved successfully");
-                                        } else {
-                                            // The save failed.
-                                            Log.d("error", "problem occured");
+                                if (list != null) {
+                                    BooksModel book = (BooksModel) list.get(0);
+                                    book.setHasSold("YES");
+                                    book.saveInBackground(new SaveCallback() {
+                                        public void done(ParseException e) {
+                                            if (e == null) {
+                                                // Saved successfully.
+                                                Log.d("error", "saved successfully");
+                                            } else {
+                                                // The save failed.
+                                                Log.d("error", "problem occured");
+                                            }
                                         }
-                                    }
-                                });
+                                    });
+                                }
+                                else{
+                                    ParseQuery<CarModel> query = ParseQuery.getQuery(CarModel.class);
+                                    query.whereEqualTo("name", holder.name.getText().toString());
+
+                                    query.findInBackground(new FindCallback<CarModel>() {
+                                        @Override
+                                        public void done(List<CarModel> list, ParseException e) {
+
+                                            if (e == null) {
+                                                if (list != null) {
+                                                    CarModel car = (CarModel) list.get(0);
+                                                    car.setHasSold("YES");
+                                                    car.saveInBackground(new SaveCallback() {
+                                                        public void done(ParseException e) {
+                                                            if (e == null) {
+                                                                // Saved successfully.
+                                                                Log.d("error", "saved successfully");
+                                                            } else {
+                                                                // The save failed.
+                                                                Log.d("error", "problem occured");
+                                                            }
+                                                        }
+                                                    });
+                                                }
+                                            } else {
+                                                Log.d("error", "adapter error");
+                                            }
+                                        }
+                                    });
+                                    activity.startActivity(new Intent(activity, user_profile.class));
+                                }
 
                                 //startActivity(activity,user_profile.class);
                             } else {
@@ -84,7 +118,7 @@ public class OnSaleAdapter extends ArrayAdapter<String> {
                             }
                         }
                     });
-                    activity.startActivity(new Intent(activity,user_profile.class));
+                    activity.startActivity(new Intent(activity, user_profile.class));
                 }
             }
         });

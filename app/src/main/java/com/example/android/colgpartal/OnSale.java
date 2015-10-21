@@ -23,8 +23,8 @@ import model.CarModel;
 
 public class OnSale extends AppCompatActivity {
     private ListView listView;
-    private ArrayList<BooksModel> mbooks;
-    private ArrayList<CarModel> mcars;
+    public static ArrayList<BooksModel> mbooks;
+    public static ArrayList<CarModel> mcars;
     private ArrayList<String> mcombine;
     private OnSaleAdapter mAdapter;
     @Override
@@ -54,7 +54,7 @@ public class OnSale extends AppCompatActivity {
             public void done(List<BooksModel> messages, ParseException e) {
                 if (e == null) {
 
-                     mbooks.clear();
+                     //mbooks.clear();
                      mbooks.addAll(messages);
                     return;
                 } else {
@@ -74,7 +74,7 @@ public class OnSale extends AppCompatActivity {
             public void done(List<CarModel> messages2, ParseException e) {
                 if (e == null) {
 
-                    mcars.clear();
+                   // mcars.clear();
                     mcars.addAll(messages2);
                     combine();
                 } else {
