@@ -1,102 +1,137 @@
-package com.example.android.colgpartal;
+package data;
 
+import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.ListView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
+import android.widget.TextView;
 
+import com.example.android.colgpartal.R;
+import com.example.android.colgpartal.user_profile;
 import com.parse.FindCallback;
-import com.parse.LogOutCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
-import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import data.OnSaleAdapter;
 import model.BooksModel;
+import model.CarModel;
 
-public class OnSale extends AppCompatActivity {
-    private ListView listView;
-    private ArrayList<BooksModel> mbooks;
-    private OnSaleAdapter mAdapter;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_on_sale);
+public class OnSaleAdapter extends ArrayAdapter<String> {
 
-        listView = (ListView) findViewById(R.id.list);
-        mbooks = new ArrayList<BooksModel>();
-        mAdapter = new OnSaleAdapter(OnSale.this, mbooks);
-        listView.setAdapter(mAdapter);
-        receiveBooks();
+
+    private String mUserId;
+    List<String> data;
+    Activity activity;
+
+    public OnSaleAdapter(Activity act, List<String> messages) {
+        super(act, 0, messages);
+        activity = act;
+        data = messages;
     }
-    private void receiveBooks() {
-        ParseQuery<BooksModel> query = ParseQuery.getQuery(BooksModel.class);
-        query.whereEqualTo("hasSold","NO");
-        query.whereEqualTo("sellerId", ParseUser.getCurrentUser().getObjectId());
 
-        query.findInBackground(new FindCallback<BooksModel>() {
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.on_sale_row, parent, false);
+
+            final ViewHolder holder = new ViewHolder();
+            holder.name = (TextView) convertView.findViewById(R.id.bookName);
+            holder.box = (CheckBox) convertView.findViewById(R.id.check);
+            convertView.setTag(holder);
+        }
+        final ViewHolder holder = (ViewHolder) convertView.getTag();
+
+
+        final String message =  getItem(position);
+
+        holder.name.setText(message);
+        holder.box.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void done(List<BooksModel> messages, ParseException e) {
-                if (e == null) {
-                    mbooks.clear();
-                    mbooks.addAll(messages);
-                    mAdapter.notifyDataSetChanged();
-                    listView.invalidate();//allows for the listview to be redrawn
-                } else {
-                    Log.v("Error:", "Error:" + e.getMessage());
+            public void onClick(View v) {
+                if (((CheckBox) v).isChecked()) {
+                    ParseQuery<BooksModel> query = ParseQuery.getQuery(BooksModel.class);
+                    query.whereEqualTo("name", holder.name.getText().toString());
+                    query.findInBackground(new FindCallback<BooksModel>() {
+                        @Override
+                        public void done(List<BooksModel> list, ParseException e) {
+                            if (e == null && list.size() != 0) {
+                                if (list.size() != 0) {
+                                    BooksModel book = (BooksModel) list.get(0);
+                                    book.setHasSold("YES");
+                                    book.saveInBackground(new SaveCallback() {
+                                        public void done(ParseException e) {
+                                            if (e == null) {
+                                                // Saved successfully.
+                                                Log.d("error", "saved successfully");
+                                            } else {
+                                                // The save failed.
+                                                Log.d("error", "problem occured");
+                                            }
+                                        }
+                                    });
+                                } else if (list.size() == 0) {
+                                    ParseQuery<CarModel> query = ParseQuery.getQuery(CarModel.class);
+                                    query.whereEqualTo("name", holder.name.getText().toString());
+                                    query.findInBackground(new FindCallback<CarModel>() {
+                                        @Override
+                                        public void done(List<CarModel> list, ParseException e) {
+                                            if (e == null) {
+                                                if (list != null && list.size() != 0) {
+                                                    CarModel car = (CarModel) list.get(0);
+                                                    car.setHasSold("YES");
+                                                    car.saveInBackground(new SaveCallback() {
+                                                        public void done(ParseException e) {
+                                                            if (e == null) {
+                                                                // Saved successfully.
+                                                                Log.d("error", "saved successfully");
+                                                            } else {
+                                                                // The save failed.
+                                                                Log.d("error", "problem occured");
+                                                            }
+                                                        }
+                                                    });
+                                                }
+                                            } else {
+                                                if (list.size() == 0) {
+                                                    Log.e("error", "Car size 0");
+                                                } else {
+                                                    Log.d("error", "adapter error");
+                                                }
+                                            }
+                                        }
+                                    });
+                                    activity.startActivity(new Intent(activity, user_profile.class));
+                                } else {
+                                    if (list.size() == 0) {
+                                        Log.d("error", "Book size 0");
+                                    } else {
+                                        Log.d("error", "adapter error");
+                                    }
+                                }
+                                //startActivity(activity,user_profile.class);
+                            } else {
+                                Log.d("error", "adapter error");
+                            }
+                        }
+                    });
+                    activity.startActivity(new Intent(activity, user_profile.class));
                 }
             }
         });
-
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_on_sale, menu);
-        return true;
+        return convertView;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_example) {
-
-            ParseUser.logOutInBackground(new LogOutCallback() {
-                @Override
-                public void done(ParseException e) {
-                    if (e == null) {
-
-                        startActivity(new Intent(OnSale.this, MainActivity.class));
-
-                    } else {
-
-                    }
-                }
-            });
-
-
-
-            return true;
-        }
-
-        if (item.getItemId() == R.id.action_home) {
-
-            startActivity(new Intent(OnSale.this, user_profile.class));
-
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+    class ViewHolder {
+        public TextView name;
+        public CheckBox box;
     }
 }
