@@ -1,6 +1,7 @@
 package data;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.example.android.colgpartal.R;
+import com.example.android.colgpartal.user_profile;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -18,15 +20,16 @@ import com.parse.SaveCallback;
 import java.util.List;
 
 import model.BooksModel;
+import model.CarModel;
 
-public class OnSaleAdapter extends ArrayAdapter<BooksModel> {
+public class OnSaleAdapter extends ArrayAdapter<String> {
 
 
     private String mUserId;
-    List<BooksModel> data;
+    List<String> data;
     Activity activity;
 
-    public OnSaleAdapter(Activity act, List<BooksModel> messages) {
+    public OnSaleAdapter(Activity act, List<String> messages) {
         super(act, 0, messages);
         activity = act;
         data = messages;
@@ -47,9 +50,9 @@ public class OnSaleAdapter extends ArrayAdapter<BooksModel> {
         final ViewHolder holder = (ViewHolder) convertView.getTag();
 
 
-        final BooksModel message = (BooksModel) getItem(position);
+        final String message =  getItem(position);
 
-        holder.name.setText(message.getName());
+        holder.name.setText(message);
         holder.box.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,26 +62,67 @@ public class OnSaleAdapter extends ArrayAdapter<BooksModel> {
                     query.findInBackground(new FindCallback<BooksModel>() {
                         @Override
                         public void done(List<BooksModel> list, ParseException e) {
-
-                            if (e == null) {
-                                BooksModel book = (BooksModel) list.get(0);
-                                book.setHasSold("YES");
-                                book.saveInBackground(new SaveCallback() {
-                                    public void done(ParseException e) {
-                                        if (e == null) {
-                                            // Saved successfully.
-                                            Log.d("error","saved successfully");
-                                        } else {
-                                            // The save failed.
-                                            Log.d("error","problem occured");
+                            if (e == null && list.size() != 0) {
+                                if (list.size() != 0) {
+                                    BooksModel book = (BooksModel) list.get(0);
+                                    book.setHasSold("YES");
+                                    book.saveInBackground(new SaveCallback() {
+                                        public void done(ParseException e) {
+                                            if (e == null) {
+                                                // Saved successfully.
+                                                Log.d("error", "saved successfully");
+                                            } else {
+                                                // The save failed.
+                                                Log.d("error", "problem occured");
+                                            }
                                         }
+                                    });
+                                } else if (list.size() == 0) {
+                                    ParseQuery<CarModel> query = ParseQuery.getQuery(CarModel.class);
+                                    query.whereEqualTo("name", holder.name.getText().toString());
+                                    query.findInBackground(new FindCallback<CarModel>() {
+                                        @Override
+                                        public void done(List<CarModel> list, ParseException e) {
+                                            if (e == null) {
+                                                if (list != null && list.size() != 0) {
+                                                    CarModel car = (CarModel) list.get(0);
+                                                    car.setHasSold("YES");
+                                                    car.saveInBackground(new SaveCallback() {
+                                                        public void done(ParseException e) {
+                                                            if (e == null) {
+                                                                // Saved successfully.
+                                                                Log.d("error", "saved successfully");
+                                                            } else {
+                                                                // The save failed.
+                                                                Log.d("error", "problem occured");
+                                                            }
+                                                        }
+                                                    });
+                                                }
+                                            } else {
+                                                if (list.size() == 0) {
+                                                    Log.e("error", "Car size 0");
+                                                } else {
+                                                    Log.d("error", "adapter error");
+                                                }
+                                            }
+                                        }
+                                    });
+                                    activity.startActivity(new Intent(activity, user_profile.class));
+                                } else {
+                                    if (list.size() == 0) {
+                                        Log.d("error", "Book size 0");
+                                    } else {
+                                        Log.d("error", "adapter error");
                                     }
-                                });
+                                }
+                                //startActivity(activity,user_profile.class);
                             } else {
                                 Log.d("error", "adapter error");
                             }
                         }
                     });
+                    activity.startActivity(new Intent(activity, user_profile.class));
                 }
             }
         });
