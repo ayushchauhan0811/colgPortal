@@ -14,7 +14,7 @@ import com.parse.ParseUser;
 
 public class Sell extends AppCompatActivity {
     Button books;
-
+    Button cars;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,7 +25,15 @@ public class Sell extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(Sell.this,Books.class));
+                startActivity(new Intent(Sell.this, Books.class));
+            }
+        });
+        cars= (Button) findViewById(R.id.car_bike);
+        cars.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(Sell.this,CarBike.class));
             }
         });
 

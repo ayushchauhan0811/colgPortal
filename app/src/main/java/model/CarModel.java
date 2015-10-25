@@ -3,15 +3,11 @@ package model;
 import com.parse.ParseClassName;
 import com.parse.ParseObject;
 
-/**
- * Created by Charu gupta on 30-Sep-15.
- */
+@ParseClassName("CarModel")
+public class CarModel extends ParseObject {
 
-    @ParseClassName("BooksModel")
-    public class BooksModel extends ParseObject {
-
-    public String getBookId(){
-        return  getString("bookId");
+    public String getCarId(){
+        return  getString("CarId");
     }
     public String getColgId() { return getString("colgId"); }
     public String getHasSold(){return getString("hasSold");}
@@ -19,17 +15,17 @@ import com.parse.ParseObject;
     public String getName() {
         return getString("name");
     }
-    public String getStream(){
-        return getString("stream");
+    public String getModel(){
+        return getString("model");
     }
     public String getDesc(){
         return getString("desc");
     }
-    public  Integer getQuantity(){return getInt("quantity");}
+    public  Integer getPrice(){return getInt("price");}
 
 
-    public void setBookId(String bookId) {
-        put("bookId", bookId);
+    public void setBCarId(String carId) {
+        put("CarId", carId);
     }
     public void setColgId(String colgId){put("colgId",colgId);}
     public void setHasSold(String has){put("hasSold",has);}
@@ -37,9 +33,9 @@ import com.parse.ParseObject;
     public void setName(String name) {
         put("name", name);
     }
-    public void setStream(String stream){put("stream",stream);}
+    public void setModel(String model){put("model",model);}
     public void setDesc(String desc){put("desc",desc);}
-    public void setQuantity(int quantity){put("quantity",quantity);}
+    public void setPrice(int price){put("price",price);}
     public void setReport(String rep){put("report",rep);}
 }
 

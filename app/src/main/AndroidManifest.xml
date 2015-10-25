@@ -2,13 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.colgpartal" >
 
-    <uses-feature android:name="android.hardware.camera" />
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".MyApplication"
@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/main_activity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -49,10 +49,7 @@
             android:name=".ColgDetails"
             android:label="@string/title_activity_colg_details" >
         </activity>
-        <activity
-            android:name=".sell"
-            android:label="@string/title_activity_sell" >
-        </activity>
+
         <activity
             android:name=".Sell"
             android:label="@string/title_activity_sell" >
@@ -78,8 +75,10 @@
             android:label="@string/title_activity_user_profile" >
         </activity>
         <activity
-            android:name=".UserProfile"
-            android:label="@string/title_activity_user_profile" >
+            android:name=".CarBike"
+            android:label="@string/title_activity_activity_car_bike" >
+        </activity>
+        <activity android:name=".CarBikeBuy" >
         </activity>
     </application>
 

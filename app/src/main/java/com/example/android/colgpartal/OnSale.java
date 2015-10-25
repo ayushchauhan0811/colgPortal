@@ -19,10 +19,13 @@ import java.util.List;
 
 import data.OnSaleAdapter;
 import model.BooksModel;
+import model.CarModel;
 
 public class OnSale extends AppCompatActivity {
     private ListView listView;
-    private ArrayList<BooksModel> mbooks;
+    public static ArrayList<BooksModel> mbooks;
+    public static ArrayList<CarModel> mcars;
+    private ArrayList<String> mcombine;
     private OnSaleAdapter mAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,23 +34,34 @@ public class OnSale extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.list);
         mbooks = new ArrayList<BooksModel>();
-        mAdapter = new OnSaleAdapter(OnSale.this, mbooks);
+        mcars= new ArrayList<CarModel>();
+        mcombine= new ArrayList<>();
+        mAdapter = new OnSaleAdapter(OnSale.this, mcombine);
         listView.setAdapter(mAdapter);
         receiveBooks();
+        receiveCars();
+        combine();
+
+        Log.v("error", "combine called");
     }
     private void receiveBooks() {
         ParseQuery<BooksModel> query = ParseQuery.getQuery(BooksModel.class);
-        query.whereEqualTo("hasSold","NO");
+        query.whereEqualTo("hasSold", "NO");
         query.whereEqualTo("sellerId", ParseUser.getCurrentUser().getObjectId());
 
         query.findInBackground(new FindCallback<BooksModel>() {
             @Override
             public void done(List<BooksModel> messages, ParseException e) {
                 if (e == null) {
-                    mbooks.clear();
-                    mbooks.addAll(messages);
-                    mAdapter.notifyDataSetChanged();
-                    listView.invalidate();//allows for the listview to be redrawn
+
+                    //mbooks.clear();
+                    if(messages!=null) {
+                        mbooks.addAll(messages);
+                    }
+                    else {
+                        mbooks=null;
+                    }
+                    return;
                 } else {
                     Log.v("Error:", "Error:" + e.getMessage());
                 }
@@ -55,6 +69,53 @@ public class OnSale extends AppCompatActivity {
         });
 
     }
+    private void receiveCars() {
+        ParseQuery<CarModel> query = ParseQuery.getQuery(CarModel.class);
+        query.whereEqualTo("hasSold","NO");
+        query.whereEqualTo("sellerId", ParseUser.getCurrentUser().getObjectId());
+
+        query.findInBackground(new FindCallback<CarModel>() {
+            @Override
+            public void done(List<CarModel> messages2, ParseException e) {
+                if (e == null) {
+                    // mcars.clear();
+                    if(messages2!=null) {
+                        mcars.addAll(messages2);
+                    }
+                    else{
+                        mcars=null;
+                    }
+                    combine();
+                } else {
+                    Log.v("Error:", "Error:" + e.getMessage());
+                }
+            }
+        });
+
+    }
+    private void combine(){
+
+        int i;
+        Log.e("book size", String.valueOf(mbooks.size()));
+
+        if(mbooks!=null) {
+            for (i = 0; i < mbooks.size(); i++) {
+                mcombine.add(mbooks.get(i).getName());
+            }
+        }
+        Log.e("car size", String.valueOf(mcars.size()));
+
+        if(mcars!=null) {
+            for (i = 0; i < mcars.size(); i++) {
+                mcombine.add(mcars.get(i).getName());
+            }
+        }
+
+        mAdapter.notifyDataSetChanged();
+        listView.invalidate();//allows for the listview to be redrawn
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

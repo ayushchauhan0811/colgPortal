@@ -14,6 +14,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.parse.LogOutCallback;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+
 public class user_profile extends AppCompatActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks {
 
@@ -51,6 +55,7 @@ public class user_profile extends AppCompatActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.container, UserProfile.newInstance())
                     .commit();
+
         }
         else if(position==1)
         {
@@ -122,6 +127,21 @@ public class user_profile extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_example) {
+            ParseUser.logOutInBackground(new LogOutCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if (e == null) {
+
+                        startActivity(new Intent(user_profile.this, MainActivity.class));
+
+                    } else {
+
+                    }
+                }
+            });
+
+
+
             return true;
         }
 
