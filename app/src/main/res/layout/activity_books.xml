@@ -1,6 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
@@ -9,31 +8,13 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="com.example.android.colgpartal.ColgDetails">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Enter Book Details"
-        android:layout_centerHorizontal="true"
-        android:textSize="34sp"
-        android:textColor="#ba35ff"
-        android:gravity="center_horizontal"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/relative"
-        android:layout_weight="1"
-        android:layout_below="@id/text"
-        android:layout_centerVertical="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+
         <RelativeLayout
+            android:id="@+id/vehicle_detail"
             android:layout_width="wrap_content"
+            android:layout_marginTop="120dp"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true">
+            android:layout_centerHorizontal="true">
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -48,7 +29,8 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="25"
+        android:ems="10"
+        android:inputType="textLongMessage"
         android:id="@+id/editText2"
         android:layout_below="@+id/editText"
         android:hint="Stream"
@@ -58,7 +40,8 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="25"
+        android:ems="10"
+        android:inputType="textLongMessage"
         android:id="@+id/editText3"
         android:hint="Description of book"
         android:layout_below="@+id/editText2"
@@ -69,22 +52,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText4"
+        android:ems="10"
         android:inputType="number"
         android:hint="Quantity"
         android:gravity="center_horizontal"
         android:layout_below="@+id/editText3"
         android:layout_centerHorizontal="true" />
     </RelativeLayout>
-    </RelativeLayout>
     <com.dd.processbutton.FlatButton
         android:id="@+id/submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Submit"
-        android:layout_marginTop="24dp"
-        android:layout_below="@+id/relative"
+        android:layout_marginBottom="24dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:textColor="@android:color/white"
         custom:pb_colorNormal="@android:color/holo_blue_light"
         custom:pb_colorPressed="@android:color/holo_blue_dark" />
-</LinearLayout>
+</RelativeLayout>

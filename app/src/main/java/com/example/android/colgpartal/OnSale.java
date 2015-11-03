@@ -54,7 +54,7 @@ public class OnSale extends AppCompatActivity {
             public void done(List<BooksModel> messages, ParseException e) {
                 if (e == null) {
 
-                     //mbooks.clear();
+                    //mbooks.clear();
                     if(messages!=null) {
                         mbooks.addAll(messages);
                     }

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.parse.FindCallback;
@@ -20,7 +21,7 @@ import data.Colgadapter;
 import model.Colg;
 
 public class MainActivity extends AppCompatActivity {
-    Button AddButton;
+    ImageView AddButton;
 
     private ListView listView;
     private ArrayList<Colg> mColgs;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new Colgadapter(MainActivity.this,   mColgs);
         listView.setAdapter(mAdapter);
         receiveColg();
-        AddButton=(Button) findViewById(R.id.add);
+        AddButton=(ImageView) findViewById(R.id.add);
         AddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

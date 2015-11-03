@@ -14,7 +14,7 @@
     <string name="title_activity_books">Books</string>
     <string name="action_logout">Logout</string>
     <string name="title_activity_buy">Buy</string>
-    <string name="title_activity_books_buy_list">Books_buy_list</string>
+    <string name="title_activity_books_buy_list">Books</string>
     <string name="title_activity_on_sale">OnSale</string>
     <string name="title_activity_particular_book">particular_book</string>
 
@@ -34,4 +34,6 @@
     <string name="putUp">Put up</string>
     <string name="ObjectsOnSale">Objects on Sale</string>
     <string name="action_home">Home</string>
+    <string name="title_activity_activity_car_bike">Car and Bikes</string>
+    <string name="main_activity">Colleges</string>
 </resources>
