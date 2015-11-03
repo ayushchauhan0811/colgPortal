@@ -10,12 +10,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.colgpartal.R;
+import com.example.android.colgportal.R;
+import com.example.android.colgportal.UserProfile;
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.io.Serializable;
 import java.util.List;
 
 import model.BooksModel;
+import model.Colg;
 
 /**
  * Created by Charu gupta on 01-Oct-15.
@@ -63,17 +69,31 @@ public class BooksAdapter extends ArrayAdapter<BooksModel> {
 
         final StringBuilder builder = new StringBuilder();
         builder.append("Books Name: " + message.getName());
-        builder.append("Stream " + message.getStream());
-        //builder.append("Desc: " + message.getDesc());
-        builder.append("Seller Id: " + message.getSellerId());
+        builder.append("\nStream " + message.getStream());
+        builder.append("\nDesc: " + message.getDesc());
+        builder.append("\nSeller Id: " + message.getSellerId());
 
+        final ParseUser[] user = new ParseUser[1];
+
+        ParseQuery<ParseUser> query = ParseQuery.getQuery(ParseUser.class);
+        query.whereEqualTo("objectId", message.getSellerId());
+
+        query.findInBackground(new FindCallback<ParseUser>() {
+            @Override
+            public void done(List<ParseUser> list, ParseException e) {
+                if(e==null) {
+                     user[0] = list.get(0);
+                }
+            }
+        });
 
         holder.callBuyer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-                intent.putExtra(Intent.EXTRA_EMAIL, "aac9095@gmail.com");
+                intent.setData(Uri.parse(user[0].getEmail()));
+                intent.putExtra(Intent.EXTRA_EMAIL, ParseUser.getCurrentUser().getEmail());
                 intent.putExtra(Intent.EXTRA_SUBJECT, "College Portal");
                 intent.putExtra(Intent.EXTRA_TEXT, (Serializable) builder);
                 if (intent.resolveActivity(activity.getPackageManager()) != null) {

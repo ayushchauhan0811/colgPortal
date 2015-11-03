@@ -1,0 +1,92 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#8BC34A"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="app.calcounterapplication.com.calcounter.FoodItemDetailsActivity">
+
+
+    <ImageView
+        android:id="@+id/logo"
+        android:src="@drawable/hangout"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"
+        android:layout_width="250dp"
+        android:layout_height="180dp" />
+
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_below="@+id/logo"
+        android:background="@drawable/row_bg"
+        android:weightSum="1"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/SpotName"
+            android:text="Name"
+            android:textSize="19sp"
+            android:layout_marginTop="18dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/Location"
+            android:text="location:"
+            android:textSize="18sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+        <TextView
+            android:id="@+id/Distance"
+            android:text="2"
+            android:textSize="18sp"
+            android:layout_marginTop="18dp"
+            android:layout_gravity="center_horizontal"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/km"
+            android:text="km from college"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" />
+
+
+        <TextView
+            android:id="@+id/Review"
+            android:text="Review"
+            android:textStyle="italic"
+            android:textSize="14sp"
+            android:layout_marginTop="14dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"/>
+
+
+
+        <!--<Button-->
+            <!--android:id="@+id/detsShareButton"-->
+            <!--android:text="SHARE"-->
+            <!--android:layout_gravity="right"-->
+            <!--android:background="@drawable/circle"-->
+            <!--android:layout_marginTop="45dp"-->
+            <!--android:layout_width="60dp"-->
+            <!--android:layout_height="60dp" />-->
+    </LinearLayout>
+</RelativeLayout>
