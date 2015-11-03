@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.colgpartal.R;
+import com.example.android.colgportal.R;
 
 import java.io.Serializable;
 import java.util.List;

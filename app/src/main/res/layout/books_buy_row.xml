@@ -23,8 +23,9 @@
         android:layout_centerVertical="true"
         android:layout_marginTop="10dp"
         android:layout_below="@+id/stream"
-        android:src="@drawable/apple"
-        android:layout_width="150dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/book"
+        android:layout_width="180dp"
         android:layout_height="150dp" />
 
     <LinearLayout
@@ -63,7 +64,7 @@
 
     <ImageView
         android:id="@+id/caller"
-        android:src="@android:drawable/ic_btn_speak_now"
+        android:src="@drawable/buy"
         android:layout_below="@+id/linear_layout"
         android:textSize="30sp"
         android:layout_margin="30dp"
@@ -71,15 +72,6 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <ImageView
-        android:id="@+id/report"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:src="@drawable/circle"
-        android:layout_below="@+id/linear_layout"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="30dp"
-        />
+
 
 </RelativeLayout>

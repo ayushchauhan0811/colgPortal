@@ -5,7 +5,7 @@ android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizo
 android:paddingRight="@dimen/activity_horizontal_margin"
 android:paddingTop="@dimen/activity_vertical_margin"
 android:paddingBottom="@dimen/activity_vertical_margin"
-tools:context="com.example.android.colgpartal.UserProfile">
+tools:context="com.example.android.colgportal.UserProfile">
 
 <ImageView
     android:id="@+id/profile_pic"

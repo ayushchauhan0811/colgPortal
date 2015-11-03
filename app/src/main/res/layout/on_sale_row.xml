@@ -17,7 +17,6 @@
         <TextView
             android:id="@+id/bookName"
             android:text="Book Name"
-            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:textSize="34sp"
             android:layout_gravity="center"
@@ -27,9 +26,40 @@
             android:id="@+id/check"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_toRightOf="@+id/bookName"
+            android:layout_alignParentRight="true"
+            android:gravity="end"
             android:layout_centerVertical="true"
             android:layout_marginLeft="27dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/textView"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/check"
+            android:layout_toStartOf="@+id/check" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:text="+"
+            android:id="@+id/button"
+            android:layout_above="@+id/bookName"
+            android:layout_alignRight="@+id/button2"
+            android:layout_alignEnd="@+id/button2" />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:id="@+id/button2"
+            android:layout_below="@+id/textView"
+            android:layout_alignLeft="@+id/textView"
+            android:layout_alignStart="@+id/textView" />
 
 
     </RelativeLayout>
