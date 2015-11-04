@@ -10,8 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-import com.example.android.colgpartal.R;
-import com.example.android.colgpartal.user_profile;
+import com.example.android.colgportal.R;
+import com.example.android.colgportal.user_profile;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -59,13 +59,11 @@ public class OnSaleAdapter extends ArrayAdapter<String> {
                 if (((CheckBox) v).isChecked()) {
                     ParseQuery<BooksModel> query = ParseQuery.getQuery(BooksModel.class);
                     query.whereEqualTo("name", holder.name.getText().toString());
-
                     query.findInBackground(new FindCallback<BooksModel>() {
                         @Override
                         public void done(List<BooksModel> list, ParseException e) {
-
-                            if (e == null) {
-                                if (list != null) {
+                            if (e == null && list.size() != 0) {
+                                if (list.size() != 0) {
                                     BooksModel book = (BooksModel) list.get(0);
                                     book.setHasSold("YES");
                                     book.saveInBackground(new SaveCallback() {
@@ -79,17 +77,14 @@ public class OnSaleAdapter extends ArrayAdapter<String> {
                                             }
                                         }
                                     });
-                                }
-                                else{
+                                } else if (list.size() == 0) {
                                     ParseQuery<CarModel> query = ParseQuery.getQuery(CarModel.class);
                                     query.whereEqualTo("name", holder.name.getText().toString());
-
                                     query.findInBackground(new FindCallback<CarModel>() {
                                         @Override
                                         public void done(List<CarModel> list, ParseException e) {
-
                                             if (e == null) {
-                                                if (list != null) {
+                                                if (list != null && list.size() != 0) {
                                                     CarModel car = (CarModel) list.get(0);
                                                     car.setHasSold("YES");
                                                     car.saveInBackground(new SaveCallback() {
@@ -105,13 +100,22 @@ public class OnSaleAdapter extends ArrayAdapter<String> {
                                                     });
                                                 }
                                             } else {
-                                                Log.d("error", "adapter error");
+                                                if (list.size() == 0) {
+                                                    Log.e("error", "Car size 0");
+                                                } else {
+                                                    Log.d("error", "adapter error");
+                                                }
                                             }
                                         }
                                     });
                                     activity.startActivity(new Intent(activity, user_profile.class));
+                                } else {
+                                    if (list.size() == 0) {
+                                        Log.d("error", "Book size 0");
+                                    } else {
+                                        Log.d("error", "adapter error");
+                                    }
                                 }
-
                                 //startActivity(activity,user_profile.class);
                             } else {
                                 Log.d("error", "adapter error");

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.colgpartal" >
+    package="com.example.android.colgportal" >
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/main_activity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,8 +30,8 @@
             android:label="@string/title_activity_user_account" >
         </activity>
         <activity
-            android:name=".login_activity"
-            android:label="@string/title_activity_login_activity" >
+            android:name=".Hangout"
+            android:label="@string/hangout" >
         </activity>
         <activity
             android:name=".CreateAccount"
@@ -48,10 +48,6 @@
         <activity
             android:name=".ColgDetails"
             android:label="@string/title_activity_colg_details" >
-        </activity>
-        <activity
-            android:name=".sell"
-            android:label="@string/title_activity_sell" >
         </activity>
         <activity
             android:name=".Sell"
@@ -79,10 +75,11 @@
         </activity>
         <activity
             android:name=".CarBike"
-            android:label="@string/title_activity_activity_car_bike"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:label="@string/title_activity_activity_car_bike" >
         </activity>
         <activity android:name=".CarBikeBuy" >
+        </activity>
+        <activity android:name=".PlacesDetailShow" >
         </activity>
     </application>
 

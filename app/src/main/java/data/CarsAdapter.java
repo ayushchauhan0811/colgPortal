@@ -7,10 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.android.colgpartal.R;
+import com.example.android.colgportal.R;
 
 import java.io.Serializable;
 import java.util.List;
@@ -41,8 +42,8 @@ public class CarsAdapter extends ArrayAdapter<CarModel> {
             holder.name = (TextView) convertView.findViewById(R.id.name);
             holder.model= (TextView) convertView.findViewById(R.id.model);
             holder.price= (TextView) convertView.findViewById(R.id.price);
-            holder.callBuyer= (ImageView) convertView.findViewById(R.id.caller);
-            holder.report=(ImageView) convertView.findViewById(R.id.report);
+            holder.callBuyer= (Button) convertView.findViewById(R.id.caller);
+            //holder.report=(ImageView) convertView.findViewById(R.id.report);
             convertView.setTag(holder);
         }
         final ViewHolder holder = (ViewHolder) convertView.getTag();
@@ -96,7 +97,7 @@ public class CarsAdapter extends ArrayAdapter<CarModel> {
         public TextView desc;
         public TextView model;
         public TextView price;
-        public ImageView callBuyer;
+        public Button callBuyer;
         public ImageView report;
     }
 }
