@@ -1,3 +1,27 @@
+<<<<<<< HEAD
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#6f8bc3"
+    tools:context="app.calcounterapplication.com.calcounter.DisplayFoodsActivity">
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageView
+        android:id="@+id/add"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/list"
+        android:src="@drawable/plus"
+        android:layout_margin="32dp"/>
+</RelativeLayout>
+||||||| merged common ancestors
+=======
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,3 +43,4 @@
         android:text="Add College"
         android:layout_margin="8dp"/>
 </RelativeLayout>
+>>>>>>> master
