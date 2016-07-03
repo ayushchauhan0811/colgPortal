@@ -10,9 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.colgportal.MyApplication;
+import com.example.android.colgpartal.MyApplication;
+import com.example.android.colgpartal.user_account;
 import com.example.android.colgportal.R;
-import com.example.android.colgportal.user_account;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;

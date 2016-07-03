@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.dd.processbutton.iml.ActionProcessButton;
+import com.example.android.colgportal.R;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;

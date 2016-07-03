@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.android.colgportal.R;
+
 import model.Colg;
 
 public class ColgDetails extends AppCompatActivity {

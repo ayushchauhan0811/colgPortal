@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.example.android.colgportal.R;
+
 /*
  * NewMealActivity contains two fragments that handle
  * data entry and capturing a photo of a given meal.

@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.android.colgportal.R;
+
 public class user_account extends AppCompatActivity  implements View.OnClickListener{
 
     private Button loginButton;

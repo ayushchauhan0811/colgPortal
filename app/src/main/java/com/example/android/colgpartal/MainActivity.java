@@ -7,8 +7,10 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.example.android.colgportal.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -20,7 +22,7 @@ import data.Colgadapter;
 import model.Colg;
 
 public class MainActivity extends AppCompatActivity {
-    Button AddButton;
+    public ImageView AddButton;
 
     private ListView listView;
     private ArrayList<Colg> mColgs;
@@ -35,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new Colgadapter(MainActivity.this,   mColgs);
         listView.setAdapter(mAdapter);
         receiveColg();
-        AddButton=(Button) findViewById(R.id.add);
+        AddButton=(ImageView) findViewById(R.id.add);
         AddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

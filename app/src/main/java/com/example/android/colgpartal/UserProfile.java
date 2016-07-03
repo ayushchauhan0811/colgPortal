@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.android.colgportal.R;
 import com.parse.ParseUser;
 
 import java.io.File;

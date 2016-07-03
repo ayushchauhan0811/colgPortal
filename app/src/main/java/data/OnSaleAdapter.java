@@ -10,8 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import com.example.android.colgpartal.user_profile;
 import com.example.android.colgportal.R;
-import com.example.android.colgportal.user_profile;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;

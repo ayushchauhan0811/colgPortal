@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.android.colgportal.PlacesDetailShow;
 import com.example.android.colgportal.R;
 
 import java.util.List;
@@ -50,13 +49,13 @@ public class Placesadapter extends ArrayAdapter<Places> {
             Toast.makeText(activity, "view empty", Toast.LENGTH_LONG).show();
         }
         holder.name.setText(message.getName());
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                activity.startActivity(new Intent(activity,PlacesDetailShow.class));
-            }
-        });
+//        convertView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                activity.startActivity(new Intent(activity,PlacesDetailShow.class));
+//            }
+//        });
         return convertView;
     }
 
