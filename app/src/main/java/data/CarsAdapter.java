@@ -71,7 +71,7 @@ public class CarsAdapter extends ArrayAdapter<CarModel> {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SENDTO);
                 intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-                intent.putExtra(Intent.EXTRA_EMAIL, "aac9095@gmail.com");
+                intent.putExtra(Intent.EXTRA_EMAIL, "darshgupta50@gmail.com");
                 intent.putExtra(Intent.EXTRA_SUBJECT, "College Portal");
                 intent.putExtra(Intent.EXTRA_TEXT, (Serializable) builder);
                 if (intent.resolveActivity(activity.getPackageManager()) != null) {
